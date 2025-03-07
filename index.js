@@ -5,6 +5,7 @@ const { Client, Events, GatewayIntentBits, Collection, REST, Routes } = require(
 const express = require('express')
 const app = express()
 const port = process.env.PORT || 4000;
+app.use(express.static(path.join(__dirname)));
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent] });
 client.commands = new Collection();
@@ -87,11 +88,11 @@ client.on(Events.InteractionCreate, async interaction => {
 });
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+    res.sendFile(path.join(__dirname, 'index.html'));
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+    console.log(`TORI listening on port ${port}`)
 })
 
 client.login(process.env.DISCORD_TOKEN);
