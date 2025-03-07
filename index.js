@@ -2,6 +2,9 @@ const fs = require("fs");
 const path = require("path");
 const { Client, Events, GatewayIntentBits, Collection, REST, Routes } = require("discord.js");
 // const { DISCORD_TOKEN, GUILD_ID, CLIENT_ID } = require("./config.json");
+const express = require('express')
+const app = express()
+const port = process.env.PORT || 4000;
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.MessageContent] });
 client.commands = new Collection();
@@ -82,5 +85,13 @@ client.on(Events.InteractionCreate, async interaction => {
 		}
 	}
 });
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
 
 client.login(process.env.DISCORD_TOKEN);
