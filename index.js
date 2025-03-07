@@ -88,7 +88,7 @@ client.on(Events.InteractionCreate, async interaction => {
 });
 
 app.get('/', (req, res) => {
-    res.redirect(path.join(__dirname, '/frontend/'));
+    res.redirect(path.join('/frontend/'));
 })
 
 app.listen(port, () => {
