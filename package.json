@@ -20,7 +20,8 @@
   "homepage": "https://github.com/arijitkroy/Discord_Tori#readme",
   "dependencies": {
     "@google/generative-ai": "^0.24.0",
-    "discord.js": "^14.18.0"
+    "discord.js": "^14.18.0",
+    "express": "^4.21.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
