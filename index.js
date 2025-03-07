@@ -31,7 +31,8 @@ const rest = new REST().setToken(DISCORD_TOKEN);
 	try {
 		console.log(`Started refreshing ${commands.length} application (/) commands.`);
 		const data = await rest.put(
-			Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID), // Routes.applicationCommands(CLIENT_ID),
+			// Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID), 
+            Routes.applicationCommands(CLIENT_ID),
 			{ body: commands },
 		);
 		console.log(`Successfully reloaded ${data.length} application (/) commands.`);
