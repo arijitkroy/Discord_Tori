@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require("discord.js");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
-const genAI = new GoogleGenerativeAI(require("../../config.json").GEMINI_API);
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API);
 const model = genAI.getGenerativeModel({
     model: "gemini-2.0-flash",
     systemInstruction: "You are a multi-purpose AI assistant operating in Discord and hence will generate and format outputs accordingly."

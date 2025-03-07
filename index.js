@@ -26,13 +26,13 @@ for (const folder of commandFolders) {
     }
 }
 
-const rest = new REST().setToken(DISCORD_TOKEN);
+const rest = new REST().setToken(process.env.DISCORD_TOKEN);
 (async () => {
 	try {
 		console.log(`Started refreshing ${commands.length} application (/) commands.`);
 		const data = await rest.put(
 			// Routes.applicationGuildCommands(CLIENT_ID, GUILD_ID), 
-            Routes.applicationCommands(CLIENT_ID),
+            Routes.applicationCommands(process.env.CLIENT_ID),
 			{ body: commands },
 		);
 		console.log(`Successfully reloaded ${data.length} application (/) commands.`);
@@ -83,4 +83,4 @@ client.on(Events.InteractionCreate, async interaction => {
 	}
 });
 
-client.login(DISCORD_TOKEN);
+client.login(process.env.DISCORD_TOKEN);
