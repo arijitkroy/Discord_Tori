@@ -1,0 +1,29 @@
+{
+  "name": "discord_tori",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arijitkroy/Discord_Tori.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/arijitkroy/Discord_Tori/issues"
+  },
+  "homepage": "https://github.com/arijitkroy/Discord_Tori#readme",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.0",
+    "discord.js": "^14.18.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "eslint": "^9.21.0"
+  }
+}
