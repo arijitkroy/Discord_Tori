@@ -88,7 +88,7 @@ client.on(Events.InteractionCreate, async interaction => {
 });
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, './frontend/'));
+    res.sendFile(path.join(__dirname, '/frontend/'));
 })
 
 app.listen(port, () => {
