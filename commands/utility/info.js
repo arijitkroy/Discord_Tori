@@ -14,7 +14,6 @@ module.exports = {
         .setDescription('Displays system details of the bot'),
     async execute(interaction) {
         const processUptime = process.uptime();
-        const systemUptime = os.uptime();
         const totalMem = os.totalmem();
         const freeMem = os.freemem();
         const cpuInfo = os.cpus()[0].model;
@@ -30,11 +29,10 @@ module.exports = {
             { name: 'Platform', value: `${platform} (${arch})`, inline: true },
             { name: 'Node.js Version', value: nodeVersion, inline: true },
             { name: 'Process Uptime', value: `${formatTime(processUptime)}`, inline: true },
-            { name: 'System Uptime', value: `${formatTime(systemUptime)}`, inline: true },
             { name: 'CPU', value: `${cpuInfo} (${cpuCount} cores)`, inline: false },
             { 
             name: 'Memory', 
-            value: `Total: ${(totalMem / 1024 / 1024).toFixed(2)} MB\nFree: ${(freeMem / 1024 / 1024).toFixed(2)} MB`,
+            value: `Total: ${(totalMem / 1024 / 1024/ 1024).toFixed(2)} GB\nFree: ${(freeMem / 1024 / 1024 / 1024).toFixed(2)} GB`,
             inline: false 
             }
         ],
