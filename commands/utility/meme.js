@@ -35,6 +35,6 @@ module.exports = {
             .setURL(post_url ? post_url : "")
             .setImage(preview)
             .setFooter({ text: footer });
-        nsfw === false ?? interaction.reply({ embeds: [embed], files: [file] }) : interaction.reply({ embeds: [embed] });
+        nsfw === false ? interaction.reply({ embeds: [embed], files: [file] }) : interaction.reply({ embeds: [embed] });
     }
 }
