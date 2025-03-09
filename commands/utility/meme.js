@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder, Colors, AttachmentBuilder } = require("discord.js");
-const file = new AttachmentBuilder("./frontend/nsfw.jpg";
+const file = new AttachmentBuilder("./frontend/nsfw.jpg");
 
 module.exports = {
     syntax: '/meme [subreddit]',
