@@ -8,6 +8,7 @@ const model = genAI.getGenerativeModel({
 });
 
 module.exports = {
+    syntax: '/chat <prompt>',
     cooldown: 5,
     data: new SlashCommandBuilder()
         .setName('chat')

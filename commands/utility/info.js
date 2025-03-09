@@ -9,6 +9,8 @@ function formatTime(seconds) {
 }
 
 module.exports = {
+    syntax: '/info',
+    cooldown: 3,
     data: new SlashCommandBuilder()
         .setName('info')
         .setDescription('Displays system details of the bot'),
