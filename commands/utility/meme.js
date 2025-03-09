@@ -25,7 +25,7 @@ module.exports = {
         let author = `Author: ${data.author}`;
         let post_url = data.postLink;
         let nsfw = data.nsfw ? data.nsfw : false;
-        let preview = data.preview ? data.preview[data.preview.length - 1] : "";
+        let preview = data.preview && nsfw === false ? data.preview[data.preview.length - 1] : "attachment://nsfw.jpg";
         let footer = `${data.subreddit ? "Subreddit: " + data.subreddit + " |" : ""} ${data.ups ? "Up Votes: " + data.ups : ""}`;
 
         const embed = new EmbedBuilder()
@@ -33,8 +33,8 @@ module.exports = {
             .setAuthor({ name: author ? author : "" })
             .setColor(Colors.Blurple)
             .setURL(post_url ? post_url : "")
-            .setImage(preview && nsfw == false ? preview : "attachment://nsfw.jpg")
+            .setImage(preview)
             .setFooter({ text: footer });
-        nsfw ?? interaction.reply({ embeds: [embed], files: [file] }) : interaction.reply({ embeds: [embed] });
+        nsfw === false ?? interaction.reply({ embeds: [embed], files: [file] }) : interaction.reply({ embeds: [embed] });
     }
 }
