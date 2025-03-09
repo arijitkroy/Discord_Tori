@@ -1,4 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder, Colors, AttachmentBuilder } = require("discord.js");
+const file = new AttachmentBuilder("../assets/nsfw.jpg");
 
 module.exports = {
     syntax: '/meme [subreddit]',
@@ -32,7 +33,7 @@ module.exports = {
             .setAuthor({ name: author ? author : "" })
             .setColor(Colors.Blurple)
             .setURL(post_url ? post_url : "")
-            .setImage(preview && nsfw == false ? preview : "https://i.ibb.co/Zp3GZ7bD/nsfw.jpg")
+            .setImage(preview && nsfw == false ? preview : "attachment://nsfw.jpg")
             .setFooter({ text: footer });
         interaction.reply({ embeds: [embed] });
     }
