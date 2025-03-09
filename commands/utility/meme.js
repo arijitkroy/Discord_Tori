@@ -1,5 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder, Colors, AttachmentBuilder } = require("discord.js");
-let file;
+const file = new AttachmentBuilder("./frontend/nsfw.jpg";
 
 module.exports = {
     syntax: '/meme [subreddit]',
@@ -25,7 +25,7 @@ module.exports = {
         let author = `Author: ${data.author}`;
         let post_url = data.postLink;
         let nsfw = data.nsfw ? data.nsfw : false;
-        let preview = data.preview && nsfw === false ? data.preview[data.preview.length - 1] : (file = new AttachmentBuilder("./frontend/nsfw.jpg"), "attachment://nsfw.jpg");
+        let preview = data.preview && nsfw === false ? data.preview[data.preview.length - 1] : "attachment://nsfw.jpg";
         let footer = `${data.subreddit ? "Subreddit: " + data.subreddit + " |" : ""} ${data.ups ? "Up Votes: " + data.ups : ""}`;
 
         const embed = new EmbedBuilder()
@@ -35,6 +35,6 @@ module.exports = {
             .setURL(post_url ? post_url : "")
             .setImage(preview)
             .setFooter({ text: footer });
-        nsfw === false ? interaction.reply({ embeds: [embed], files: [file] }) : interaction.reply({ embeds: [embed] });
+        nsfw === true ? interaction.reply({ embeds: [embed], files: [file] }) : interaction.reply({ embeds: [embed] });
     }
 }
