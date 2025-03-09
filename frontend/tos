@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service - TORI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    h1, h2, h3 {
+      color: #444;
+    }
+    ul {
+      margin-left: 20px;
+    }
+    a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Terms of Service</h1>
+    <p><strong>Last Updated:</strong> 09.03.2025</p>
+    
+    <h2>1. Acceptance of Terms</h2>
+    <p>
+      By accessing or using the Multipurpose AI Assistant Bot TORI provided by Arijit, you agree to be bound by these Terms of Service. If you do not agree with these Terms, please do not use the Bot.
+    </p>
+    
+    <h2>2. Description of the Service</h2>
+    <p>
+      Our Bot is designed to enhance your Discord server experience by providing a seamless AI-driven chat assistant using slash commands. Leveraging the latest technologies including Discord.js and Gemini API (2.0 Flash), the Bot delivers accurate and contextually relevant responses to your queries.
+    </p>
+    
+    <h2>3. User Responsibilities</h2>
+    <p>
+      When using the Bot, you agree to:
+    </p>
+    <ul>
+      <li>Provide accurate and current information when necessary.</li>
+      <li>Use the Bot in a lawful and respectful manner.</li>
+      <li>Avoid using the Bot for any malicious, harmful, or disruptive purposes.</li>
+      <li>Respect the privacy and rights of other users and abide by all Discord community guidelines.</li>
+    </ul>
+    
+    <h2>4. Intellectual Property</h2>
+    <p>
+      All features, content, and functionalities provided by the Bot are the property of its licensors. You are granted a limited, non-exclusive, and non-transferable license to use the Bot in accordance with these Terms.
+    </p>
+    
+    <h2>5. Disclaimer of Warranties</h2>
+    <p>
+      The Bot is provided on an "as is" and "as available" basis. We do not guarantee that the Bot will be uninterrupted, error-free, or meet your specific requirements. All use is at your own risk.
+    </p>
+    
+    <h2>6. Limitation of Liability</h2>
+    <p>
+      In no event shall [Your Company Name] be liable for any direct, indirect, incidental, special, or consequential damages, including but not limited to loss of data, profits, or use, arising out of your use of or inability to use the Bot.
+    </p>
+    
+    <h2>7. Modifications to These Terms</h2>
+    <p>
+      We reserve the right to update or modify these Terms at any time without prior notice. Continued use of the Bot after any changes constitutes acceptance of the revised Terms.
+    </p>
+    
+    <h2>8. Termination</h2>
+    <p>
+      We reserve the right to suspend or terminate your access to the Bot at our sole discretion, without prior notice, for any reason including, but not limited to, a violation of these Terms.
+    </p>
+    
+    <h2>9. Governing Law</h2>
+    <p>
+      These Terms shall be governed by and construed in accordance with the laws of [Your Jurisdiction], without regard to its conflict of law provisions.
+    </p>
+    
+    <h2>10. Contact Information</h2>
+    <p>
+      If you have any questions or concerns about these Terms, please contact us at:
+    </p>
+    <p>
+      Email: <a href="mailto:arijitkroy16@gmail.com">arijitkroy16@gmail.com</a><br>
+    </p>
+    
+    <h2>11. Additional Terms</h2>
+    <p>
+      Any additional policies or guidelines posted on our website or within the Bot are incorporated by reference into these Terms.
+    </p>
+    
+    <p>
+      By using the Bot, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.
+    </p>
+  </div>
+</body>
+</html>
