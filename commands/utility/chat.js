@@ -8,18 +8,26 @@ const model = genAI.getGenerativeModel({
 });
 
 module.exports = {
-    syntax: '/chat <prompt>',
+    syntax: '/chat <prompt> [temperature]',
     cooldown: 5,
     data: new SlashCommandBuilder()
         .setName('chat')
-        .setDescription("Generate response for your prompt")
+        .setDescription("Generate response for your prompt (with or without a provided randomness)")
         .addStringOption(option =>
             option
                 .setName('prompt')
                 .setDescription('Enter anything')
-                .setRequired(true)),
+                .setRequired(true))
+        .addStringOption(option =>
+            option
+                .setName('temperature')
+                .setDescription('Randomness of response (0 to 2)')
+                .setRequired(false)),
     async execute(interaction) {
         const prompt = interaction.options.getString('prompt');
+        let temperature = interaction.options.getString('temperature') || 0.1;
+        if (temperature > 2) temperature = 2;
+        if (temperature < 0) temperature = 0;
         try {
             const result = await model.generateContentStream({
                 contents: [
@@ -34,7 +42,7 @@ module.exports = {
                 ],
                 generationConfig: {
                     maxOutputTokens: 8000,
-                    temperature: 0.1,
+                    temperature: temperature,
                 }
             });
 
