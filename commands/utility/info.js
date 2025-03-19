@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('discord.js');
 const os = require('os');
-const TopGG = require("@top-gg/sdk");
+//  const TopGG = require("@top-gg/sdk");
 
 function formatTime(seconds) {
   const h = Math.floor(seconds / 3600);
@@ -9,7 +9,7 @@ function formatTime(seconds) {
   return `${h}h ${m}m ${s}s`;
 }
 
-const topApi = new TopGG.Api(process.env.TOPGG_TOKEN);
+// const topApi = new TopGG.Api(process.env.TOPGG_TOKEN);
 
 module.exports = {
     syntax: '/info',
@@ -26,7 +26,7 @@ module.exports = {
         const platform = os.platform();
         const arch = os.arch();
         const nodeVersion = process.version;
-        const serverCount = (await topApi.getStats('1132538384875798631')).serverCount;
+        // const serverCount = (await topApi.getStats('1132538384875798631')).serverCount;
 
         const embed = {
         color: 0x00ff00,
@@ -41,7 +41,7 @@ module.exports = {
             value: `Total: ${(totalMem / 1024 / 1024/ 1024).toFixed(2)} GB\nFree: ${(freeMem / 1024 / 1024 / 1024).toFixed(2)} GB`,
             inline: false 
             },
-            { name: 'Servers: ', value: serverCount }
+            // { name: 'Servers: ', value: serverCount, inline: false }
         ],
         timestamp: new Date()
         };

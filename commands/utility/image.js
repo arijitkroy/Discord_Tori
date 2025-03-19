@@ -22,7 +22,6 @@ module.exports = {
         ),
     async execute(interaction) {
         const prompt = interaction.options.getString('prompt');
-        await interaction.deferReply();
         const result = await aiModel.generateContent({
             contents: [
                 {
@@ -35,8 +34,9 @@ module.exports = {
                 }
             ]
         });
+        await interaction.deferReply();
         try {
-            if (result.response.text === '1') throw new Error();
+            if (result.response.text === 1) return await interaction.editReply("Cannot generate NSFW content!");;
             const response = await fetch(`https://api-inference.huggingface.co/models/${model}`, {
                 method:'POST',
                 headers: {
