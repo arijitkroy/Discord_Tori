@@ -1,5 +1,12 @@
 const { SlashCommandBuilder, EmbedBuilder, Colors, AttachmentBuilder } = require("discord.js");
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 const model = "stabilityai/stable-diffusion-3.5-large";
+
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API);
+const aiModel = genAI.getGenerativeModel({
+    model: "gemini-2.0-flash",
+    systemInstruction: "You are a multi-purpose AI assistant operating in Discord and hence will generate and format outputs accordingly. Do not generate response in Latex format or any other unsupported formatting of Discord."
+});
 
 module.exports = {
     cooldown: 5,
@@ -16,7 +23,20 @@ module.exports = {
     async execute(interaction) {
         const prompt = interaction.options.getString('prompt');
         await interaction.deferReply();
+        const result = await aiModel.generateContent({
+            contents: [
+                {
+                    role: 'user',
+                    parts: [
+                        {
+                            text: `Answer in only 1 or 0 whether the given prompt string contains nsfw (mainly sexual terms) words or not: ${prompt}`,
+                        }
+                    ],
+                }
+            ]
+        });
         try {
+            if (result.response.text === '1') throw new Error();
             const response = await fetch(`https://api-inference.huggingface.co/models/${model}`, {
                 method:'POST',
                 headers: {
