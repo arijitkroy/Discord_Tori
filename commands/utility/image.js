@@ -28,7 +28,7 @@ module.exports = {
                     role: 'user',
                     parts: [
                         {
-                            text: `Answer in only 1 or 0 whether the given prompt string contains nsfw (mainly sexual terms) words or not: ${prompt}`,
+                            text: `Answer in only 1 or 0 whether the given prompt (check strictly) string contains nsfw words (or any form of sexual terms) or not: ${prompt}`,
                         }
                     ],
                 }
