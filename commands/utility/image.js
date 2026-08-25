@@ -1,6 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder, Colors, AttachmentBuilder } = require("discord.js");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-const model = "stabilityai/stable-diffusion-3-medium-diffusers";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API);
 const aiModel = genAI.getGenerativeModel({
@@ -38,32 +37,23 @@ module.exports = {
         try {
             const responseText = result.response.text().trim();
             if (responseText === '1') return await interaction.editReply("Cannot generate NSFW content!");
-            const response = await fetch(`https://router.huggingface.co/hf-inference/models/${model}`, {
-                method:'POST',
-                headers: {
-                    'Authorization': `Bearer ${process.env.HUGGINGFACE_API}`,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    inputs: prompt,
-                    options: { wait_for_model: true }
-                })
-            });
+
+            const seed = Math.floor(Math.random() * 1_000_000);
+            const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?model=flux&width=1024&height=1024&nologo=true&seed=${seed}`;
+            const response = await fetch(imageUrl);
 
             if (!response.ok) {
-                console.error('Hugging Face API response error:', response.statusText);
+                console.error('Pollinations API response error:', response.statusText);
                 return await interaction.editReply("Error generating image. Please try again later.");
             }
 
-            console.log(response);
-
             const imageBuffer = Buffer.from(await response.arrayBuffer());
-            const attachment = new AttachmentBuilder(imageBuffer, { name: 'generated.png' });
+            const attachment = new AttachmentBuilder(imageBuffer, { name: 'generated.jpg' });
             const embed = new EmbedBuilder()
                 .setTitle('AI Generated Image')
-                .setDescription(`Prompt: ${prompt}`)
-                .setImage('attachment://generated.png')
-                .setFooter({ text: "Generated using Stable Diffusion 3 Medium" })
+                .setDescription(`**Prompt:** ${prompt}`)
+                .setImage('attachment://generated.jpg')
+                .setFooter({ text: "Generated using FLUX.1 (Pollinations AI)" })
                 .setColor(Colors.Blurple);
             await interaction.editReply({ embeds: [embed], files: [attachment] });
 
