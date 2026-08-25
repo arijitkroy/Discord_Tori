@@ -4,7 +4,7 @@ const model = "stabilityai/stable-diffusion-3.5-large";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API);
 const aiModel = genAI.getGenerativeModel({
-    model: "gemini-2.0-flash",
+    model: "gemini-3.6-flash",
     systemInstruction: "You are a multi-purpose AI assistant operating in Discord and hence will generate and format outputs accordingly. Do not generate response in Latex format or any other unsupported formatting of Discord."
 });
 
