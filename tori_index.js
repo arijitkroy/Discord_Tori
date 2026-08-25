@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const { Client, Events, GatewayIntentBits, Collection, REST, Routes } = require("discord.js");
-// const { DISCORD_TOKEN, GUILD_ID, CLIENT_ID } = require("./config.json");
+const { AutoPoster } = require("topgg-autoposter");
 const express = require('express')
 const app = express()
 const port = process.env.PORT || 4000;
@@ -35,8 +35,8 @@ const rest = new REST().setToken(process.env.DISCORD_TOKEN);
 	try {
 		console.log(`Started refreshing ${commands.length} application (/) commands.`);
 		const data = await rest.put(
-			    // Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID), 
-             	Routes.applicationCommands(process.env.CLIENT_ID),
+			// Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID), 
+			Routes.applicationCommands(process.env.CLIENT_ID),
 			{ body: commands },
 		);
 		console.log(`Successfully reloaded ${data.length} application (/) commands.`);
@@ -47,6 +47,12 @@ const rest = new REST().setToken(process.env.DISCORD_TOKEN);
 
 client.once(Events.ClientReady, readyClient => {
     console.log(`Ready! Logged in as ${readyClient.user.tag}`);
+    if (process.env.TOPGG_TOKEN) {
+        const poster = AutoPoster(process.env.TOPGG_TOKEN, client);
+        poster.on('posted', () => {
+            console.log('Posted stats to Top.gg!');
+        });
+    }
 });
 
 client.on(Events.InteractionCreate, async interaction => {
