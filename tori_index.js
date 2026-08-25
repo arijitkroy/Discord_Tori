@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const { Client, Events, GatewayIntentBits, Collection, REST, Routes } = require("discord.js");
+const { Client, Events, GatewayIntentBits, Collection, REST, Routes, MessageFlags } = require("discord.js");
 const { AutoPoster } = require("topgg-autoposter");
 const express = require('express')
 const app = express()

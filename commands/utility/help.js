@@ -10,13 +10,13 @@ module.exports = {
         .setDescription('Displays list of available commands of the bot'),
     async execute(interaction) {
         let fields_body = [];
-        const foldersPath = path.join('./commands');
+        const foldersPath = path.resolve(__dirname, '..');
         const commandFolders = fs.readdirSync(foldersPath);
         for (const folder of commandFolders) {
             const commandsPath = path.join(foldersPath, folder);
             const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith(".js"));
             for (const file of commandFiles) {
-                const command = require(`./${file}`);
+                const command = require(path.join(commandsPath, file));
                 fields_body.push({
                     name: `\`${command.syntax}\``,
                     value: command.data.description

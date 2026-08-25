@@ -36,7 +36,8 @@ module.exports = {
         });
         await interaction.deferReply();
         try {
-            if (result.response.text === 1) return await interaction.editReply("Cannot generate NSFW content!");;
+            const responseText = result.response.text().trim();
+            if (responseText === '1') return await interaction.editReply("Cannot generate NSFW content!");
             const response = await fetch(`https://api-inference.huggingface.co/models/${model}`, {
                 method:'POST',
                 headers: {
@@ -47,7 +48,7 @@ module.exports = {
                     inputs: prompt,
                     options: { wait_for_model: true }
                 })
-            })
+            });
 
             if (!response.ok) {
                 console.error('Hugging Face API response error:', response.statusText);
@@ -68,7 +69,7 @@ module.exports = {
 
         } catch (error) {
             console.log(error);
-            await interaction.reply("There was an error generating the image. Please try again later");
+            await interaction.editReply("There was an error generating the image. Please try again later");
         }
     }
 }
