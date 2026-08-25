@@ -1,3 +1,11 @@
+if (typeof process.loadEnvFile === 'function') {
+    try {
+        process.loadEnvFile();
+    } catch {
+        // .env file not found or already provided via environment
+    }
+}
+
 const fs = require("fs");
 const path = require("path");
 const { Client, Events, GatewayIntentBits, Collection, REST, Routes, MessageFlags } = require("discord.js");
