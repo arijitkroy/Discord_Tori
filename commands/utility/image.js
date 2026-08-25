@@ -21,6 +21,7 @@ module.exports = {
                 .setRequired(true)
         ),
     async execute(interaction) {
+        await interaction.deferReply();
         const prompt = interaction.options.getString('prompt');
         const result = await aiModel.generateContent({
             contents: [
@@ -34,7 +35,6 @@ module.exports = {
                 }
             ]
         });
-        await interaction.deferReply();
         try {
             const responseText = result.response.text().trim();
             if (responseText === '1') return await interaction.editReply("Cannot generate NSFW content!");

@@ -28,6 +28,7 @@ module.exports = {
         let temperature = interaction.options.getString('temperature') || 0.1;
         if (temperature > 2) temperature = 2;
         if (temperature < 0) temperature = 0;
+        await interaction.reply("TORI is thinking...");
         try {
             const result = await model.generateContentStream({
                 contents: [
@@ -47,7 +48,6 @@ module.exports = {
             });
 
             let fullResponse = "";
-            await interaction.reply("TORI is thinking...");
             let firstReply = true;
             let followUpMessageIds = [];
 
