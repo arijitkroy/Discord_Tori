@@ -1,6 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder, Colors, AttachmentBuilder } = require("discord.js");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-const model = "stabilityai/stable-diffusion-3.5-large";
+const model = "stabilityai/stable-diffusion-3-medium-diffusers";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API);
 const aiModel = genAI.getGenerativeModel({
@@ -38,7 +38,7 @@ module.exports = {
         try {
             const responseText = result.response.text().trim();
             if (responseText === '1') return await interaction.editReply("Cannot generate NSFW content!");
-            const response = await fetch(`https://api-inference.huggingface.co/models/${model}`, {
+            const response = await fetch(`https://router.huggingface.co/hf-inference/models/${model}`, {
                 method:'POST',
                 headers: {
                     'Authorization': `Bearer ${process.env.HUGGINGFACE_API}`,
@@ -63,7 +63,7 @@ module.exports = {
                 .setTitle('AI Generated Image')
                 .setDescription(`Prompt: ${prompt}`)
                 .setImage('attachment://generated.png')
-                .setFooter({ text: "Generated using Stable Diffusion 3.5" })
+                .setFooter({ text: "Generated using Stable Diffusion 3 Medium" })
                 .setColor(Colors.Blurple);
             await interaction.editReply({ embeds: [embed], files: [attachment] });
 
